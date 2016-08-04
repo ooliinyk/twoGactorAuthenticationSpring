@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="twoGactorAuthenticationSpring:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="twoGactorAuthenticationSpring-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="twoGactorAuthenticationSpring:war exploded" />
+    </root>
+  </artifact>
+</component>
