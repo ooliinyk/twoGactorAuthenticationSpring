@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class TimeBasedOneTimePassword {
 
-    private static final String SHARED_SECRET = "6YFX5HZT76OHHNMS";
+    public static final String SHARED_SECRET = "6YFX5HZT76OHHNMS";
     private static final int VARIANCE = 5;
 
     public static boolean isVerificationCodeValid(int code) throws VerificationCodeException {
@@ -36,7 +36,7 @@ public class TimeBasedOneTimePassword {
         return false;
     }
 
-    private static long getCode(String secret, long timeIndex) throws InvalidKeyException, NoSuchAlgorithmException {
+    public static long getCode(String secret, long timeIndex) throws InvalidKeyException, NoSuchAlgorithmException {
         return getCode(new Base32().decode(secret), timeIndex);
     }
 
@@ -58,8 +58,8 @@ public class TimeBasedOneTimePassword {
         return (truncatedHash %= 1000000);
     }
 
-    private static long getTimeIndex() {
-        return System.currentTimeMillis() / 1000 / 30;
+    public static long getTimeIndex() {
+        return System.currentTimeMillis() / 1000 / 90;
     }
 
 }

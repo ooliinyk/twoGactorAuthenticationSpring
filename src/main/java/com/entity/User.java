@@ -20,7 +20,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("user_id")
     @Column(name = "user_id")
     private long id;
 
@@ -47,6 +46,12 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles = new HashSet<Role>();
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_to_user_info",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_info_id")})
+    private UserInfo userInfo = new UserInfo();
 
 
     public long getId() {
@@ -89,10 +94,15 @@ public class User {
         this.roles = roles;
     }
 
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
 
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
 
-
-//
+    //
 //    @Override
 //    public String toString() {
 //        final StringBuilder sb = new StringBuilder("User{");

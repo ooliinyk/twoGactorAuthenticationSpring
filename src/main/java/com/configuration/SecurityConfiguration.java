@@ -25,13 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup", "/static/**").permitAll()
                 .antMatchers("/code").hasRole("PRE_AUTH_USER")
                 .antMatchers("/home").hasRole("USER")
-                .anyRequest().authenticated();
+                .anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/code");
 
         http.formLogin()
                 .loginPage("/login")
                 .permitAll()
                         // always use the default success url despite if a protected page had been previously visited
-                .defaultSuccessUrl("/code", true)
+                .defaultSuccessUrl("/home", true)
                 .and()
                 .logout()
                 .permitAll();

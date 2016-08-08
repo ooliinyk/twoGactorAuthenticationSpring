@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class VerificationCodeController {
     public String verifyCode(String code) {
         String view = "redirect:/code?error";
         try {
+
             if (TimeBasedOneTimePassword.isVerificationCodeValid(Integer.parseInt(code))) {
                 grantAuthority();
                 view = "redirect:/home";

@@ -8,13 +8,13 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <h2>You are logged in as</h2>
+                <h2>You are logged in </h2>
                 <hr class="colorgraph" />
                 <div class="row" th:with="currentUser=${#httpServletRequest.userPrincipal?.principal}">
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group" th:text="${currentUser?.firstName} + ' ' + ${currentUser?.lastName}">
-                            FirstName LastName
-                        </div>
+                        <!--<div class="form-group" th:text="${currentUser?.login} ">-->
+                            Main page
+                        <!--</div>-->
                     </div>
                  </div>
                 <hr class="colorgraph" />
